@@ -95,7 +95,7 @@ function deleteNote(index){
     showNotes();
 }
 
-//Search specific things on notes
+//Search specific things on notes only for notes content
 let searchTxt=document.querySelector('#searchTxt');
 searchTxt.addEventListener('input',function(){
     let inputVal=searchTxt.value.toLowerCase();
@@ -103,7 +103,8 @@ searchTxt.addEventListener('input',function(){
     let noteCards=document.querySelectorAll('.noteCard');
     Array.from(noteCards).forEach(function(element){
         let cardText=element.getElementsByTagName("p")[0].innerText.toLowerCase();
-        if(cardText.includes(inputVal)){
+        let cardTitle=element.getElementsByTagName("h5")[0].innerText.toLowerCase();
+        if(cardText.includes(inputVal)||cardTitle.includes(inputVal)){
             element.style.display="block";
         }
         else{
